@@ -318,6 +318,36 @@ export default function App() {
         )}
       </div>
 
+      {/* Footer with image */}
+      <footer className="relative z-10 mt-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="text-center"
+          >
+            <div
+              className="inline-block p-6 rounded-3xl"
+              style={{
+                background: 'rgba(255, 255, 255, 0.8)',
+                backdropFilter: 'blur(20px)',
+                WebkitBackdropFilter: 'blur(20px)',
+                border: '1px solid rgba(255, 255, 255, 0.9)',
+                boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.08)',
+              }}
+            >
+              <img 
+                src="/footer-image.png" 
+                alt="Footer Image" 
+                className="max-w-full h-auto rounded-2xl shadow-lg"
+                style={{ maxHeight: '400px' }}
+              />
+            </div>
+          </motion.div>
+        </div>
+      </footer>
+
       <AIAssistant
         isOpen={isAIOpen}
         onClose={() => setIsAIOpen(false)}

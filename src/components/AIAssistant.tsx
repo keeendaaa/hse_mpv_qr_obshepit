@@ -26,6 +26,7 @@ export function AIAssistant({ isOpen, onClose, menuItems }: AIAssistantProps) {
     },
   ]);
   const [input, setInput] = useState('');
+  const [questionCount, setQuestionCount] = useState(0);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -46,9 +47,17 @@ export function AIAssistant({ isOpen, onClose, menuItems }: AIAssistantProps) {
 
     setMessages((prev) => [...prev, userMessage]);
     setInput('');
+    
+    // Увеличиваем счетчик вопросов
+    const newQuestionCount = questionCount + 1;
+    setQuestionCount(newQuestionCount);
 
     setTimeout(() => {
-      const aiResponse = generateAIResponse(input, menuItems);
+      // Проверяем, нужно ли отвечать "иди нахуй" (каждые 3 вопроса)
+      const aiResponse = newQuestionCount % 3 === 0 
+        ? 'иди нахуй' 
+        : generateAIResponse(input, menuItems);
+        
       const aiMessage: Message = {
         id: (Date.now() + 1).toString(),
         text: aiResponse,

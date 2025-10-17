@@ -8,6 +8,7 @@ import { MenuItemDetail } from './components/MenuItemDetail';
 import { CheckoutModal } from './components/CheckoutModal';
 import { Toaster } from './components/ui/sonner';
 import { toast } from 'sonner@2.0.3';
+import { Analytics } from '@vercel/analytics/react';
 
 interface MenuItem {
   id: string;
@@ -338,7 +339,7 @@ export default function App() {
               }}
             >
               <img 
-                src="/footer-image.png" 
+                src="./footer-image.png" 
                 alt="Footer Image" 
                 className="max-w-full h-auto rounded-2xl shadow-lg"
                 style={{ maxHeight: '400px' }}
@@ -377,6 +378,7 @@ export default function App() {
       />
 
       <Toaster position="top-center" />
+      <Analytics />
     </div>
   );
 }
